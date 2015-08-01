@@ -106,7 +106,11 @@ models$m6 <-
 
 fits$m6 <- lavaan::cfa(models$m6, data = ccases, orthogonal = TRUE)
 
-sapply(fits, function(X) core_fitmeasures(X))
+
+sumtable <- sapply(fits, function(X) core_fitmeasures(X))
+sumtable <- t(sumtable)
+sumtable
+write.csv(sumtable, file = "output/sumtable.csv")
 
 
 ```
